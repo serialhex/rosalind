@@ -1,24 +1,17 @@
 (ns rosalind.basics)
 
-(defn dna-counter-fn
-  "This actually does the counting"
-  [dna cnt]
-  (let [l (first dna)
-        r (rest dna)]
-    (case l
-        \A (def h (assoc cnt :A (+ 1 (:A cnt))))
-        \G (def h (assoc cnt :G (+ 1 (:G cnt))))
-        \C (def h (assoc cnt :C (+ 1 (:C cnt))))
-        \T (def h (assoc cnt :T (+ 1 (:T cnt))))
-        nil)
-    (if (empty? r)
-      h
-      (recur r h))))
-
-(defn dna-count
+(defn count-dna
   "Counts DNA Neucleotides"
   [dna]
-  (let [h (dna-counter-fn dna {:A 0 :C 0 :T 0 :G 0})]
+  (let [h (reduce (fn [c base]
+              (case base
+                  \A (assoc c :A (+ 1 (:A c)))
+                  \G (assoc c :G (+ 1 (:G c)))
+                  \C (assoc c :C (+ 1 (:C c)))
+                  \T (assoc c :T (+ 1 (:T c)))
+                  nil))
+            {:A 0 :C 0 :T 0 :G 0}
+            dna)]
     [(:A h) (:C h) (:G h) (:T h)]))
 
 (defn transcribe-dna
