@@ -1,7 +1,7 @@
 (ns rosalind.basics)
 
 (defn count-dna
-  "Counts DNA Neucleotides"
+  "Counts DNA Nucleotides"
   [dna-str]
   (reduce (fn [c base]
       (case base
