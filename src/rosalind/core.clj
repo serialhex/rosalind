@@ -1,4 +1,5 @@
-(ns rosalind.core)
+(ns rosalind.core
+  (:use rosalind.basics))
 
 (defn foo
   "I don't do a whole lot."

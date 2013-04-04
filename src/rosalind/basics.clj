@@ -2,17 +2,16 @@
 
 (defn count-dna
   "Counts DNA Neucleotides"
-  [dna]
-  (let [h (reduce (fn [c base]
-              (case base
-                  \A (assoc c :A (+ 1 (:A c)))
-                  \G (assoc c :G (+ 1 (:G c)))
-                  \C (assoc c :C (+ 1 (:C c)))
-                  \T (assoc c :T (+ 1 (:T c)))
-                  nil))
-            {:A 0 :C 0 :T 0 :G 0}
-            dna)]
-    [(:A h) (:C h) (:G h) (:T h)]))
+  [dna-str]
+  (reduce (fn [c base]
+      (case base
+          \A (assoc c :A (+ 1 (:A c)))
+          \G (assoc c :G (+ 1 (:G c)))
+          \C (assoc c :C (+ 1 (:C c)))
+          \T (assoc c :T (+ 1 (:T c)))
+          nil))
+    {:A 0 :C 0 :T 0 :G 0}
+    dna-str))
 
 (defn transcribe-dna
   "Transcribes DNA to the equivalent RNA"
@@ -30,3 +29,9 @@
               \G (str "C" cmp)))
       ""
       dna-str))
+
+(defn cg-content
+  "Computes the CG content of a strand of DNA"
+  [dna-str]
+  (let [s (count-dna dna-str)]
+    (/ (+ (:G s) (:C s)) (+ (:G s) (:C s) (:A s) (:T s)))))
