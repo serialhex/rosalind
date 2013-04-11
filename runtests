@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+java -cp "/home/serialhex/src/rosalind/test:/home/serialhex/src/rosalind/src:/home/serialhex/src/rosalind/dev-resources:/home/serialhex/src/rosalind/resources:/home/serialhex/src/rosalind/target/classes:/home/serialhex/.m2/repository/org/clojure/contrib/jar/1.3.0-alpha3/jar-1.3.0-alpha3.jar:/home/serialhex/.m2/repository/org/clojure/contrib/classpath/1.3.0-alpha3/classpath-1.3.0-alpha3.jar:/home/serialhex/.m2/repository/org/clojure/contrib/find-namespaces/1.3.0-alpha3/find-namespaces-1.3.0-alpha3.jar:/home/serialhex/.m2/repository/com/stuartsierra/lazytest/2.0.0-SNAPSHOT/lazytest-2.0.0-SNAPSHOT.jar:/home/serialhex/.m2/repository/org/clojure/clojure/1.4.0/clojure-1.4.0.jar" lazytest.watch src test

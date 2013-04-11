@@ -1,5 +1,6 @@
 (ns rosalind.core
-  (:use rosalind.basics))
+  (:use rosalind.basics
+        rosalind.datatypes))
 
 (defn foo
   "I don't do a whole lot."
@@ -10,3 +11,12 @@
   "Main entry point"
   []
   (foo "oh bother..."))
+
+(defn rosalind-compute-gc
+  "Computing GC Content Problem"
+  []
+  (map (fn [x]
+    (vector (:id x) (cg-content (:dna x))))
+    (from-str (slurp "data/rosalind_gc.txt"))))
+
+

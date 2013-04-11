@@ -1,0 +1,23 @@
+(ns rosalind.datatypes-test
+  (:use lazytest.deftest
+        rosalind.datatypes))
+
+(def test-str
+  ">Rosalind_6404
+CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
+TCCCACTAATAATTCTGAGG
+>Rosalind_5959
+CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCT
+ATATCCATTTGTCAGCAGACACGC
+>Rosalind_0808
+CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC
+TGGGAACCTGCGGGCAGTAGGTGGAAT")
+
+(deftest importing
+  (testing "Sets the ID properly"
+    (is (= "Rosalind_6404"
+      (:id (first (from-str test-str))))))
+  (testing "Sets the DNA properly"
+    (is (= "CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG"
+      (:dna (first (from-str test-str)))))))
+
